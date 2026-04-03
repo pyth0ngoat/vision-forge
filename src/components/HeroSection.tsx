@@ -10,11 +10,11 @@ const HeroSection = () => {
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background video placeholder */}
       <div className="absolute inset-0 bg-background">
-        {/* Replace this div with a <video> tag for your showreel:
+        
             <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-30">
               <source src="/reel.mp4" type="video/mp4" />
             </video>
-        */}
+        
         <div className="absolute inset-0 grid-line opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/50 to-background" />
       </div>
