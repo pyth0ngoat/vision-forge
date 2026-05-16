@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const socials = [
   { label: "ArtStation", url: "https://artstation.com" },
@@ -9,67 +9,75 @@ const socials = [
 
 const AboutContact = () => {
   return (
-    <section id="about" className="py-24 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
-      <div className="grid md:grid-cols-2 gap-16">
+    <section id="about" className="bg-foreground text-background">
+      <div className="container-x py-28 md:py-36">
         {/* About */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-5xl"
         >
-          <p className="text-primary font-mono text-xs tracking-[0.3em] uppercase mb-3">About</p>
-          <h2 className="font-display text-4xl font-bold mb-6">The Artist</h2>
-          <p className="text-muted-foreground leading-relaxed mb-4">
-            I'm a multidisciplinary digital artist specializing in 3D animation, visual effects, and cinematic video editing.
-            With a passion for storytelling through motion and light, I craft experiences that blur the line between reality and imagination.
+          <p className="mono text-xs tracking-[0.25em] uppercase text-background/60 mb-6">
+            002 — About
           </p>
-          <p className="text-muted-foreground leading-relaxed">
-            Currently available for freelance projects, studio collaborations, and creative partnerships.
+          <h2 className="display-xl text-4xl md:text-6xl lg:text-7xl leading-[0.95]">
+            A multidisciplinary <span className="serif-italic text-primary">artist</span> obsessed with motion, light & story.
+          </h2>
+          <p className="mt-10 text-background/70 text-lg md:text-xl max-w-2xl leading-relaxed">
+            I craft cinematic animation, photoreal visual effects, and rhythm-driven edits for filmmakers, brands, and artists. From concept to delivery — every frame is treated like the only one that matters.
           </p>
         </motion.div>
 
-        {/* Contact */}
+        {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="mt-24 md:mt-32 grid md:grid-cols-12 gap-10 items-end border-t border-background/20 pt-16"
         >
-          <p className="text-primary font-mono text-xs tracking-[0.3em] uppercase mb-3">Contact</p>
-          <h2 className="font-display text-4xl font-bold mb-6">Let's Connect</h2>
+          <div className="md:col-span-7">
+            <p className="mono text-xs tracking-[0.25em] uppercase text-background/60 mb-6">
+              003 — Let's collaborate
+            </p>
+            <a
+              href="mailto:hello@youremail.com"
+              className="group inline-flex items-baseline gap-4 display-xl text-5xl md:text-7xl lg:text-8xl leading-none hover:text-primary transition-colors"
+            >
+              <span>hello@youremail.com</span>
+              <ArrowUpRight className="w-10 h-10 md:w-14 md:h-14 transition-transform duration-500 group-hover:rotate-45 shrink-0" />
+            </a>
+          </div>
 
-          <a
-            href="mailto:hello@youremail.com"
-            className="inline-flex items-center gap-3 text-foreground hover:text-primary transition-colors font-display text-lg mb-8 group"
-          >
-            <Mail className="w-5 h-5 text-primary" />
-            hello@youremail.com
-          </a>
-
-          <div className="flex gap-6 mt-2">
-            {socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors font-mono text-sm tracking-wider uppercase"
-              >
-                {s.label}
-              </a>
-            ))}
+          <div className="md:col-span-5 md:pl-10">
+            <p className="mono text-xs tracking-[0.25em] uppercase text-background/60 mb-6">
+              Elsewhere
+            </p>
+            <ul className="space-y-3">
+              {socials.map((s) => (
+                <li key={s.label}>
+                  <a
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between border-b border-background/20 pb-3 text-lg hover:text-primary transition-colors"
+                  >
+                    <span>{s.label}</span>
+                    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:rotate-45" />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </motion.div>
-      </div>
 
-      {/* Footer */}
-      <div className="mt-24 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-muted-foreground text-xs font-mono">
-          © {new Date().getFullYear()} — All rights reserved
-        </p>
-        <p className="text-muted-foreground/50 text-xs font-mono">
-          Built with passion & pixels
-        </p>
+        {/* Footer */}
+        <div className="mt-28 pt-8 border-t border-background/20 flex flex-col sm:flex-row items-center justify-between gap-4 mono text-xs text-background/50">
+          <p>© {new Date().getFullYear()} VISUAL. — All rights reserved</p>
+          <p>Crafted frame by frame.</p>
+        </div>
       </div>
     </section>
   );
