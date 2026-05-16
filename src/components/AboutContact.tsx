@@ -36,22 +36,22 @@ const AboutContact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="mt-24 md:mt-32 grid md:grid-cols-12 gap-10 items-end border-t border-background/20 pt-16"
+          className="mt-24 md:mt-32 grid md:grid-cols-12 gap-12 md:gap-16 items-start border-t border-background/20 pt-16"
         >
-          <div className="md:col-span-7">
+          <div className="md:col-span-8 min-w-0">
             <p className="mono text-xs tracking-[0.25em] uppercase text-background/60 mb-6">
               003 — Let's collaborate
             </p>
             <a
               href="mailto:hello@youremail.com"
-              className="group inline-flex items-baseline gap-4 display-xl text-5xl md:text-7xl lg:text-8xl leading-none hover:text-primary transition-colors"
+              className="group inline-flex items-center gap-3 md:gap-5 display-xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1] hover:text-primary transition-colors break-all"
             >
-              <span>hello@youremail.com</span>
-              <ArrowUpRight className="w-10 h-10 md:w-14 md:h-14 transition-transform duration-500 group-hover:rotate-45 shrink-0" />
+              <span className="break-all">hello@youremail.com</span>
+              <ArrowUpRight className="w-7 h-7 md:w-10 md:h-10 transition-transform duration-500 group-hover:rotate-45 shrink-0" />
             </a>
           </div>
 
-          <div className="md:col-span-5 md:pl-10">
+          <div className="md:col-span-4">
             <p className="mono text-xs tracking-[0.25em] uppercase text-background/60 mb-6">
               Elsewhere
             </p>
