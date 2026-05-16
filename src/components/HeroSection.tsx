@@ -1,86 +1,98 @@
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 const HeroSection = () => {
   const scrollToWork = () => {
     document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const marqueeItems = [
+    "Animation",
+    "VFX",
+    "Video Editing",
+    "Motion Design",
+    "3D",
+    "Compositing",
+    "Color",
+    "Storytelling",
+  ];
+
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background video placeholder */}
-      <div className="absolute inset-0 bg-background">
-        
-            <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-30">
-              <source src="/reel.mp4" type="video/mp4" />
-            </video>
-        
-        <div className="absolute inset-0 grid-line opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/50 to-background" />
-      </div>
-
-      {/* Scan line effect */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="w-full h-px bg-primary/20 animate-scan-line" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-4xl">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-primary font-mono text-sm tracking-[0.3em] uppercase mb-6"
+    <section className="relative min-h-screen flex flex-col justify-end pb-10 pt-28 overflow-hidden bg-background">
+      {/* Background reel */}
+      <div className="absolute inset-0 -z-10">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-90"
         >
-          Animation · VFX · Video
-        </motion.p>
+          <source src="/reel.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/20 to-background" />
+      </div>
 
+      <div className="container-x w-full">
+        {/* Eyebrow */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-3 mb-8"
+        >
+          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <p className="mono text-xs tracking-[0.25em] uppercase text-foreground/70">
+            Portfolio / 2025 — Open for commissions
+          </p>
+        </motion.div>
+
+        {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-display text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-[0.9]"
+          transition={{ duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}
+          className="display-xl text-[14vw] md:text-[11vw] lg:text-[9.5vw] leading-[0.85] text-foreground"
         >
-          Crafting
+          We craft <span className="serif-italic text-primary">visual</span>
           <br />
-          <span className="neon-text">Visual</span>{" "}
-          Realities
+          realities for screen.
         </motion.h1>
 
-        <motion.p
+        {/* Sub row */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-8 text-muted-foreground text-lg max-w-xl mx-auto font-body"
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-12 grid md:grid-cols-3 gap-8 items-end"
         >
-          Bringing imagination to life through motion, light, and pixels.
-        </motion.p>
+          <div className="md:col-span-2">
+            <p className="text-foreground/80 text-lg md:text-xl max-w-2xl leading-relaxed">
+              A multidisciplinary studio of one — building cinematic animation, photoreal VFX, and rhythm-driven edits for brands, filmmakers, and artists.
+            </p>
+          </div>
 
-        <motion.button
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.0 }}
-          onClick={scrollToWork}
-          className="mt-12 px-8 py-3 border border-primary/50 text-primary font-display text-sm tracking-widest uppercase rounded-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300 neon-border"
-        >
-          View Work
-        </motion.button>
+          <button
+            onClick={scrollToWork}
+            className="group inline-flex items-center justify-between gap-6 px-6 py-5 rounded-full border border-foreground/20 hover:border-foreground hover:bg-foreground hover:text-background transition-all duration-300 self-end"
+          >
+            <span className="mono text-xs tracking-widest uppercase">Selected Work</span>
+            <ArrowDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" />
+          </button>
+        </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <ChevronDown className="w-5 h-5 text-muted-foreground" />
-        </motion.div>
-      </motion.div>
+      {/* Marquee */}
+      <div className="mt-20 border-y border-border/70 py-5 overflow-hidden">
+        <div className="flex whitespace-nowrap marquee-track">
+          {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
+            <div key={i} className="flex items-center gap-10 px-10">
+              <span className="display-xl text-3xl md:text-4xl">{item}</span>
+              <span className="text-primary text-2xl">✦</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };
